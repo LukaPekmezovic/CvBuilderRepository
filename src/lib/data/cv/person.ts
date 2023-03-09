@@ -2,32 +2,23 @@ import { Person } from 'lp-project-1/components/cv';
 
 export const person: Person = {
   id: '1',
-  firstName: 'Stevan',
-  lastName: 'Pavlovic',
+  firstName: 'Jovan',
+  lastName: 'Dovic',
   title: 'Developer',
-  summary: `With over 8 years of professional experience, I possess a
-          comprehensive understanding of API development, web platforms, and
-          software architecture. My dedication to developing top-tier solutions
-          is evidenced by my tireless work ethic, goal-oriented mindset, and
-          unwavering commitment to excellence. I attribute my continued success
-          to a combination of my passion for innovative problem-solving,
-          proficiency in microservices, Node.js, and event-driven architecture,
-          and my exceptional work style. As a skilled communicator and team
-          player, I have consistently fostered positive relationships with
-          colleagues, making me a valuable asset to any organization.`,
+  summary: `I'm amazing`,
   contactInformation: {
     links: [
       {
-        label: 'pavlovicmstevan@gmail.com',
-        href: 'pavlovicmstevan@gmail.com',
+        label: 'jovandovic@yahoo.com',
+        href: 'jovandovic@gmail.com',
       },
     ],
   },
   education: [
     {
       institution: {
-        label: 'Technical Faculty, Singidunum University',
-        href: 'https://eng.singidunum.ac.rs/',
+        label: 'School of Electrical Engineering, University of Belgrade',
+        href: 'https://www.etf.bg.ac.rs/en',
       },
 
       description: 'Software and Data Engineering',
@@ -105,11 +96,11 @@ export const person: Person = {
   workExperience: [
     {
       company: {
-        label: 'Safety Real Time',
+        label: 'Amazing Company',
         href: '#',
       },
 
-      location: '- Remote -',
+      location: 'Belgrade',
       title: 'Technical Manager & Lead Developer',
       dateRange: {
         from: new Date(),
