@@ -60,9 +60,7 @@ const createSidebarItem = (
 
 const Page: FC<PageProps> = ({ title, children, restrictWidth = true }) => {
   const { push } = useRouter();
-
   const [isFixed] = useState(false);
-
   const breadcrumbs: EuiBreadcrumb[] = [
     {
       text: 'Management',
@@ -136,7 +134,7 @@ const Page: FC<PageProps> = ({ title, children, restrictWidth = true }) => {
     </>
   );
 
-  const sidebarItems = [
+  const _sidebarItems = [
     createSidebarItem(
       push,
       'Luka',

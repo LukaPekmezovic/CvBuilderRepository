@@ -2,15 +2,15 @@ import { EuiMarkdownFormat, EuiText } from '@elastic/eui';
 import { FC } from 'react';
 
 import { CvSection } from '../sections/CvSection';
+import { SectionViewProps } from '../types';
 
-export interface SummaryProps {
-  summary: string;
-}
-
-export const Summary: FC<SummaryProps> = ({ summary }) => (
-  <CvSection title="Summary">
+export const Summary: FC<SectionViewProps> = ({
+  title,
+  person: { summary },
+}) => (
+  <CvSection title={title}>
     <EuiText size="s">
-      <EuiMarkdownFormat>{summary}</EuiMarkdownFormat>
+      <EuiMarkdownFormat textSize="s">{summary}</EuiMarkdownFormat>
     </EuiText>
   </CvSection>
 );

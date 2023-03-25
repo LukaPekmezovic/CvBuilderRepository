@@ -1,18 +1,25 @@
+import { EuiMarkdownFormat, EuiTitle } from '@elastic/eui';
 import { FC } from 'react';
 
-import { SkillItem } from '..';
+import { SectionViewProps } from '..';
 import { CvSection } from '../sections/CvSection';
 
-export interface SkillsProps {
-  items: SkillItem[];
-}
-
-export const Skills: FC<SkillsProps> = ({ items }) => (
-  <CvSection title="Skills & Experience">
+export const Skills: FC<SectionViewProps> = ({
+  title,
+  person: { skills: items },
+}) => (
+  <CvSection title={title}>
     <ul>
       {items.map((item, index) => (
         <li key={index}>
-          <strong>{item.title}</strong> ({item.description})
+          <EuiTitle size="xxs">
+            <h4>{item.title}</h4>
+          </EuiTitle>
+          {!!item.description && (
+            <EuiMarkdownFormat textSize="s">
+              {item.description}
+            </EuiMarkdownFormat>
+          )}
         </li>
       ))}
     </ul>

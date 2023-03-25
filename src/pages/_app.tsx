@@ -1,6 +1,7 @@
 import { EuiErrorBoundary } from '@elastic/eui';
 import { Global } from '@emotion/react';
 import 'core-js/stable';
+import { GitHubApolloProvider } from 'lp-project-1/lib/gql/github';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { FunctionComponent } from 'react';
@@ -9,6 +10,7 @@ import 'regenerator-runtime/runtime';
 import Chrome from '../components/chrome';
 import { Theme } from '../components/theme';
 import { globalStyes } from '../styles/global.styles';
+import './../styles/app.scss';
 
 /**
  * Next.js uses the App component to initialize pages. You can override it
@@ -25,11 +27,13 @@ const EuiApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => (
     </Head>
     <Global styles={globalStyes} />
     <Theme>
-      <Chrome>
-        <EuiErrorBoundary>
-          <Component {...pageProps} />
-        </EuiErrorBoundary>
-      </Chrome>
+      <GitHubApolloProvider>
+        <Chrome>
+          <EuiErrorBoundary>
+            <Component {...pageProps} />
+          </EuiErrorBoundary>
+        </Chrome>
+      </GitHubApolloProvider>
     </Theme>
   </>
 );

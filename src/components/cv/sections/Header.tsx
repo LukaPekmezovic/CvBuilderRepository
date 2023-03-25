@@ -1,13 +1,11 @@
 import { EuiText, EuiTextColor, EuiTitle } from '@elastic/eui';
 import { FC } from 'react';
 
-export interface HeaderProps {
-  firstName: string;
-  lastName: string;
-  title: string;
-}
+import { SectionViewProps } from '../types';
 
-export const Header: FC<HeaderProps> = ({ firstName, lastName, title }) => (
+export const Header: FC<SectionViewProps> = ({
+  person: { firstName, lastName, title },
+}) => (
   <>
     <EuiTitle size="m">
       <h1>{`${firstName} ${lastName}`}</h1>

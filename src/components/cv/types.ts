@@ -1,13 +1,11 @@
-import { EuiFlexItemProps } from '@elastic/eui';
-import { ReactNode } from 'react';
+import { EuiFlexItemProps, IconType } from '@elastic/eui';
+import { Dispatch, FC, SetStateAction } from 'react';
+
+import { FlyoutContent } from './CvBuilder';
 
 export interface OuterLink {
   label: string;
   href: string;
-}
-
-export interface ContactInformation {
-  links: OuterLink[];
 }
 
 export interface CvDateRange {
@@ -23,7 +21,7 @@ export interface EducationItem {
 
 export interface SkillItem {
   title: string;
-  description: string;
+  description?: string;
 }
 
 export interface WorkExperienceItem {
@@ -35,28 +33,50 @@ export interface WorkExperienceItem {
   skills: SkillItem[];
 }
 
+export interface CustomSectionItem {
+  title: string;
+  location: string;
+  description: string;
+}
+
 export interface Person {
   id: string;
   firstName: string;
   lastName: string;
   title: string;
   summary: string;
-  // TODO: Luka - napraviti
-  contactInformation: ContactInformation;
-  // TODO: Luka - napraviti
+  contactInformation: OuterLink[];
   education: EducationItem[];
-  // TODO: Luka - napraviti
   skills: SkillItem[];
-  // TODO: Luka - zavrsiti
   workExperience: WorkExperienceItem[];
+  custom: CustomSectionItem[];
 }
 
-export interface SectionLayout {
-  placement: 'left' | 'right';
-  render: (person: Person) => ReactNode;
+export interface SectionViewProps {
+  title: string;
+  person: Person;
+}
+
+export interface SectionBuilderProps {
+  section: SectionDefinition;
+  setSection: (newSection: SectionDefinition) => void;
+  person: Person;
+  setPerson: Dispatch<SetStateAction<Person>>;
+  setFlyoutVisible: (value: boolean) => void;
+  setFlyoutContent: (content: FlyoutContent) => void;
+}
+
+export interface SectionDefinition {
+  id: string;
+  title: string;
+  viewPlacement: 'left' | 'right';
+  viewComponent: FC<SectionViewProps>;
+  builderComponent: FC<SectionBuilderProps>;
+  icon: IconType;
+  enabled: boolean;
 }
 
 export interface SeparatedSection {
   grow: EuiFlexItemProps['grow'];
-  sections: SectionLayout[];
+  sections: SectionDefinition[];
 }

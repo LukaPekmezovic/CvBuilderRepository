@@ -2,6 +2,7 @@ import {
   EuiFieldText,
   EuiFlexItem,
   EuiFormRow,
+  EuiMarkdownEditor,
   EuiSpacer,
   EuiTitle,
 } from '@elastic/eui';
@@ -10,7 +11,7 @@ import { FC } from 'react';
 import { SectionBuilderProps } from '../types';
 import { ItemListBuilder } from './common/ItemListBuilder';
 
-export const ContactInformationBuilder: FC<SectionBuilderProps> = ({
+export const CustomSectionBuilder: FC<SectionBuilderProps> = ({
   section,
   setSection,
   person,
@@ -21,38 +22,41 @@ export const ContactInformationBuilder: FC<SectionBuilderProps> = ({
   <ItemListBuilder
     section={section}
     setSection={setSection}
-    items={person.contactInformation}
+    items={person.custom}
     setItems={newItems => {
       setPerson({
         ...person,
-        contactInformation: newItems,
+        custom: newItems,
       });
     }}
     setFlyoutContent={setFlyoutContent}
     setFlyoutVisible={setFlyoutVisible}
     itemConstructor={() => ({
-      href: '#',
-      label: 'Label',
+      title: 'Title',
+      location: 'Location',
+      description: 'Desc',
     })}
     itemComponentProps={(item, setItem) => ({
-      title: section.title,
+      title: 'Contact Information',
       panelContent: (
-        <EuiTitle size="xxs">
-          <h4>{item.label}</h4>
-        </EuiTitle>
+        <>
+          <EuiTitle size="xxs">
+            <h4>{item.title}</h4>
+          </EuiTitle>
+        </>
       ),
       children: (
         <>
           <EuiFlexItem grow={1}>
-            <EuiFormRow label="Name" fullWidth>
+            <EuiFormRow label="Title" fullWidth>
               <EuiFieldText
                 compressed
                 fullWidth
-                value={item.label}
+                value={item.title}
                 onChange={e => {
                   setItem({
                     ...item,
-                    label: e.target.value,
+                    title: e.target.value,
                   });
                 }}
               />
@@ -60,19 +64,33 @@ export const ContactInformationBuilder: FC<SectionBuilderProps> = ({
           </EuiFlexItem>
           <EuiSpacer />
           <EuiFlexItem grow={1}>
-            <EuiFormRow label="URL" fullWidth>
+            <EuiFormRow label="Location" fullWidth>
               <EuiFieldText
                 compressed
                 fullWidth
-                value={item.href}
+                value={item.location}
                 onChange={e => {
                   setItem({
                     ...item,
-                    href: e.target.value,
+                    location: e.target.value,
                   });
                 }}
               />
             </EuiFormRow>
+          </EuiFlexItem>
+          <EuiSpacer />
+          <EuiFlexItem>
+            <EuiMarkdownEditor
+              value={item.description}
+              onChange={value => {
+                setItem({
+                  ...item,
+                  description: value,
+                });
+              }}
+              aria-labelledby=""
+              readOnly={false}
+            />
           </EuiFlexItem>
         </>
       ),

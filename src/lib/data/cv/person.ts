@@ -2,18 +2,16 @@ import { Person } from 'lp-project-1/components/cv';
 
 export const person: Person = {
   id: '1',
-  firstName: 'Jovan',
-  lastName: 'Dovic',
+  firstName: 'John',
+  lastName: 'Doe',
   title: 'Developer',
-  summary: `I'm amazing`,
-  contactInformation: {
-    links: [
-      {
-        label: 'jovandovic@yahoo.com',
-        href: 'jovandovic@gmail.com',
-      },
-    ],
-  },
+  summary: `summary.`,
+  contactInformation: [
+    {
+      label: 'johndoe@gmail.com',
+      href: 'johndoe@gmail.com',
+    },
+  ],
   education: [
     {
       institution: {
@@ -33,70 +31,11 @@ export const person: Person = {
       title: 'Node.js',
       description: 'Express APIs, Web Sockets, NestJS, TypeScript',
     },
-    {
-      title: 'React',
-      description: 'Redux, Next.js, RxJs',
-    },
-    {
-      title: 'GraphQL',
-      description:
-        'Apollo, Federation, Apollo React State Management, Apollo Server',
-    },
-    {
-      title: 'REST APIs',
-      description: '',
-    },
-    {
-      title: 'Microservices',
-      description: 'gRPC, Kafka, RabbitMQ, Redis Pub/Sub',
-    },
-    {
-      title: 'Relational & Document-oriented Databases',
-      description: 'MySQL, PostgreSQL, MongoDB',
-    },
-    {
-      title: 'Virtualization & Containerization',
-      description: 'Docker & Kubernetes',
-    },
-    {
-      title: 'Software Architecture ',
-      description:
-        'SOLID, MVC, DDD and OOP Design Patterns, Event-Driven and Functional Paradigm',
-    },
-    {
-      title: 'PHP & Frameworks',
-      description:
-        '(Laravel & Symfony)Debugging, Profiling & Performance Testing',
-    },
-    {
-      title: 'Planning, Modeling & Documenting Software',
-      description: '',
-    },
-    {
-      title: 'Git',
-      description: '',
-    },
-    {
-      title: 'AWS & Google Cloud',
-      description: '(EC2, RDS, DynamoDB, S3, SQS, ECR, SNS, CloudFront)',
-    },
-    {
-      title: 'Scrum (Agile) and WaterfallMethodologies',
-      description: '',
-    },
-    {
-      title: 'Linux, Bash scripting & Deployments',
-      description: '',
-    },
-    {
-      title: 'HTML5 & CSS3',
-      description: '',
-    },
   ],
   workExperience: [
     {
       company: {
-        label: 'Amazing Company',
+        label: 'Company 1',
         href: '#',
       },
 
@@ -106,10 +45,10 @@ export const person: Person = {
         from: new Date(),
         to: new Date(),
       },
-      description: `I served as a team leader for a group of developers, assuming responsibility for devising strategic plans and organizing
-      workflow. Specifically, I spearheaded the creation of a comprehensive safety management system geared toward enhancing
-      driver safety in the trucking industry. Acting autonomously, I designed and developed the system from scratch, ultimately
-      producing a platform comprising 40 intricately constructed modules that seamlessly facilitate the real-time transmission of data.`,
+      description: `I was the team leader for a group of developers and responsible for devising strategic plans and organizing workflow.
+      One of my major achievements was leading the creation of a comprehensive safety management system that aimed to enhance driver
+      safety in the trucking industry. Working independently, I designed and developed the system from scratch, resulting in a platform
+      consisting of 40 intricately constructed modules that enable real-time data transmission seamlessly.`,
       skills: [
         {
           title:
@@ -117,6 +56,13 @@ export const person: Person = {
           description: 'desc',
         },
       ],
+    },
+  ],
+  custom: [
+    {
+      title: 'title',
+      location: 'location',
+      description: 'desc',
     },
   ],
 };

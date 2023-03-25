@@ -6,7 +6,6 @@ import {
   EuiFlexItem,
   EuiFormRow,
   EuiMarkdownEditor,
-  EuiText,
   EuiTitle,
 } from '@elastic/eui';
 import moment from 'moment';
@@ -15,7 +14,7 @@ import { FC } from 'react';
 import { SectionBuilderProps } from '../types';
 import { ItemListBuilder } from './common/ItemListBuilder';
 
-export const WorkExperienceBuilder: FC<SectionBuilderProps> = ({
+export const EducationBuilder: FC<SectionBuilderProps> = ({
   section,
   setSection,
   person,
@@ -26,11 +25,11 @@ export const WorkExperienceBuilder: FC<SectionBuilderProps> = ({
   <ItemListBuilder
     section={section}
     setSection={setSection}
-    items={person.workExperience}
+    items={person.education}
     setItems={newItems => {
       setPerson({
         ...person,
-        workExperience: newItems,
+        education: newItems,
       });
     }}
     setFlyoutContent={setFlyoutContent}
@@ -38,45 +37,41 @@ export const WorkExperienceBuilder: FC<SectionBuilderProps> = ({
     itemConstructor={() => {
       const now = new Date();
       return {
-        company: {
+        institution: {
+          label: 'Institution name',
           href: '#',
-          label: 'New company',
         },
+        description: '',
         dateRange: {
           from: now,
           to: now,
         },
-        title: '',
-        description: '',
-        location: '',
-        skills: [],
       };
     }}
     itemComponentProps={(item, setItem) => ({
-      title: 'Work Experience Item',
+      title: 'Education',
       panelContent: (
         <>
           <EuiTitle size="xxs">
-            <h4>{item.company.label}</h4>
+            <h4>{item.institution.label}</h4>
           </EuiTitle>
-          <EuiText size="s">{item.title}</EuiText>
         </>
       ),
       children: (
         <>
-          <EuiFormRow label="Company" fullWidth>
+          <EuiFormRow label="Institution" fullWidth>
             <EuiFlexGroup gutterSize="m">
               <EuiFlexItem grow={1}>
                 <EuiFormRow label="Name" fullWidth>
                   <EuiFieldText
                     compressed
                     fullWidth
-                    value={item.company.label}
+                    value={item.institution.label}
                     onChange={e => {
                       setItem({
                         ...item,
-                        company: {
-                          ...item.company,
+                        institution: {
+                          ...item.institution,
                           label: e.target.value,
                         },
                       });
@@ -89,12 +84,12 @@ export const WorkExperienceBuilder: FC<SectionBuilderProps> = ({
                   <EuiFieldText
                     compressed
                     fullWidth
-                    value={item.company.href}
+                    value={item.institution.href}
                     onChange={e => {
                       setItem({
                         ...item,
-                        company: {
-                          ...item.company,
+                        institution: {
+                          ...item.institution,
                           href: e.target.value,
                         },
                       });
@@ -103,32 +98,6 @@ export const WorkExperienceBuilder: FC<SectionBuilderProps> = ({
                 </EuiFormRow>
               </EuiFlexItem>
             </EuiFlexGroup>
-          </EuiFormRow>
-          <EuiFormRow label="Location" fullWidth>
-            <EuiFieldText
-              compressed
-              fullWidth
-              value={item.location}
-              onChange={e => {
-                setItem({
-                  ...item,
-                  location: e.target.value,
-                });
-              }}
-            />
-          </EuiFormRow>
-          <EuiFormRow label="Title" fullWidth>
-            <EuiFieldText
-              compressed
-              fullWidth
-              value={item.title}
-              onChange={e => {
-                setItem({
-                  ...item,
-                  title: e.target.value,
-                });
-              }}
-            />
           </EuiFormRow>
           <EuiFormRow label="Period" fullWidth>
             <EuiDatePickerRange

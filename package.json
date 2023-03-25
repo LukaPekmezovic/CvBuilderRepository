@@ -34,13 +34,19 @@
     "url": "https://github.com/elastic/next-eui-starter/issues"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.10",
     "@elastic/eui": "^75.1.1",
     "@emotion/cache": "^11.10.3",
     "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.4",
     "@faker-js/faker": "^7.6.0",
     "@svgr/webpack": "^6.5.1",
+    "apollo-boost": "^0.4.9",
     "core-js": "^3.25.1",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "react-apollo": "^3.1.5",
+    "react-to-print": "^2.14.12",
     "regenerator-runtime": "^0.13.9",
     "uuid": "^9.0.0"
   },
@@ -52,6 +58,7 @@
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "apollo": "^2.34.0",
     "copy-webpack-plugin": "^10.0.0",
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.4",

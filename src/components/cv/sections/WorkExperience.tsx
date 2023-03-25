@@ -1,16 +1,15 @@
-import { EuiLink, EuiSpacer, EuiText } from '@elastic/eui';
+import { EuiLink, EuiMarkdownFormat, EuiSpacer, EuiText } from '@elastic/eui';
 import { FC } from 'react';
 
-import { WorkExperienceItem } from '..';
+import { SectionViewProps } from '..';
 import { CvSection } from '../sections/CvSection';
 import { formatDate } from './util';
 
-export interface WorkExperienceProps {
-  items: WorkExperienceItem[];
-}
-
-export const WorkExperience: FC<WorkExperienceProps> = ({ items }) => (
-  <CvSection title="Work Experience">
+export const WorkExperience: FC<SectionViewProps> = ({
+  title,
+  person: { workExperience: items },
+}) => (
+  <CvSection title={title}>
     {items.map(item => (
       <>
         <EuiText size="s">
@@ -25,7 +24,7 @@ export const WorkExperience: FC<WorkExperienceProps> = ({ items }) => (
         </EuiText>
         <EuiSpacer />
         <EuiText size="s">
-          <p>{item.description}</p>
+          <EuiMarkdownFormat textSize="s">{item.description}</EuiMarkdownFormat>
         </EuiText>
         <EuiSpacer />
         <EuiText size="s">

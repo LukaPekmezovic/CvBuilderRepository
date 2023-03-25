@@ -1,18 +1,17 @@
-import { EuiLink, EuiTextColor } from '@elastic/eui';
+import { EuiLink, EuiText, EuiTextColor } from '@elastic/eui';
 import { FC } from 'react';
 
-import { EducationItem } from '../';
+import { SectionViewProps } from '../';
 import { CvSection } from '..//sections/CvSection';
 import { formatDate } from './util';
 
-export interface EducationProps {
-  items: EducationItem[];
-}
-
-export const Education: FC<EducationProps> = ({ items }) => (
-  <CvSection title="Education">
-    {items.map(item => (
-      <>
+export const Education: FC<SectionViewProps> = ({
+  title,
+  person: { education: items },
+}) => (
+  <CvSection title={title}>
+    {items.map((item, i) => (
+      <EuiText size="s" key={i}>
         <EuiLink href={item.institution.href} target="_blank">
           {item.institution.label}
         </EuiLink>
@@ -22,7 +21,7 @@ export const Education: FC<EducationProps> = ({ items }) => (
         <p>
           ({formatDate(item.dateRange.from)} - {formatDate(item.dateRange.to)})
         </p>
-      </>
+      </EuiText>
     ))}
   </CvSection>
 );

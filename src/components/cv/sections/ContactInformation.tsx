@@ -1,25 +1,26 @@
-import { EuiLink } from '@elastic/eui';
+import { EuiLink, EuiText } from '@elastic/eui';
 import { FC } from 'react';
 
-import { ContactInformation as CI } from '..';
+import { OuterLink, SectionViewProps } from '..';
 import { CvSection } from './CvSection';
 
 export interface ContactInformationProps {
-  contactInformation: CI;
+  items: OuterLink[];
 }
 
-export const ContactInformation: FC<ContactInformationProps> = ({
-  contactInformation: { links },
+export const ContactInformation: FC<SectionViewProps> = ({
+  title,
+  person: { contactInformation: items },
 }) => (
-  <CvSection title="Contact Information">
-    {links.map((link, index) => (
-      <EuiLink
-        key={index}
-        href={link.href}
-        target="_blank"
-        style={{ marginBottom: 0 }}>
-        {link.label}
-      </EuiLink>
+  <CvSection title={title}>
+    {items.map((item, i) => (
+      <EuiText size="s" key={i}>
+        <EuiText size="s">
+          <EuiLink href={item.href}>
+            <strong>{item.label}</strong>
+          </EuiLink>
+        </EuiText>
+      </EuiText>
     ))}
   </CvSection>
 );

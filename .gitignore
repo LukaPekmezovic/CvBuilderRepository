@@ -24,3 +24,5 @@ out
 tsconfig.tsbuildinfo
 
 .prettierrc
+
+.env.local
